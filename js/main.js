@@ -1,12 +1,10 @@
 /**
- * Muchukota Shria Portfolio - Lightweight Interactions
- * - Mobile image tap fullscreen lightbox
- * - Accessible keyboard & tap dismiss
+ * Muchukota Shria Portfolio - Image Lightbox & Interactions
+ * - Opens fullscreen high-res image preview on click (desktop & mobile)
+ * - Accessible keyboard (Escape) & click-outside dismissal
  */
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile tap image viewer
-  const isMobile = () => window.matchMedia('(max-width: 899px)').matches || ('ontouchstart' in window);
-  
+  // Create lightbox overlay
   const lightbox = document.createElement('div');
   lightbox.className = 'lightbox';
   lightbox.setAttribute('role', 'dialog');
@@ -14,16 +12,21 @@ document.addEventListener('DOMContentLoaded', () => {
   lightbox.setAttribute('aria-label', 'Fullscreen image preview');
   lightbox.innerHTML = `
     <button class="lightbox-close" aria-label="Close fullscreen preview">&times;</button>
-    <img src="" alt="Fullscreen image display">
+    <div class="lightbox-content">
+      <img src="" alt="Fullscreen image display">
+      <p class="lightbox-caption"></p>
+    </div>
   `;
   document.body.appendChild(lightbox);
 
   const lightboxImg = lightbox.querySelector('img');
+  const lightboxCaption = lightbox.querySelector('.lightbox-caption');
   const closeBtn = lightbox.querySelector('.lightbox-close');
 
   function openLightbox(src, alt) {
     lightboxImg.src = src;
     lightboxImg.alt = alt || 'Fullscreen preview';
+    lightboxCaption.textContent = alt || '';
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -31,21 +34,28 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeLightbox() {
     lightbox.classList.remove('active');
     lightboxImg.src = '';
+    lightboxCaption.textContent = '';
     document.body.style.overflow = '';
   }
 
-  // Bind to artboard images
+  // Bind click listener to all artboard images (desktop + mobile)
   document.querySelectorAll('.artboard img').forEach(img => {
-    img.style.cursor = 'pointer';
+    img.style.cursor = 'zoom-in';
     img.addEventListener('click', (e) => {
-      if (isMobile()) {
-        e.preventDefault();
-        openLightbox(img.currentSrc || img.src, img.alt);
-      }
+      e.preventDefault();
+      // Use full resolution source
+      openLightbox(img.currentSrc || img.src, img.alt);
     });
   });
 
-  lightbox.addEventListener('click', closeLightbox);
+  // Close handlers
+  lightbox.addEventListener('click', (e) => {
+    // Close if clicking outside the image or on close button
+    if (e.target === lightbox || e.target === closeBtn || e.target.classList.contains('lightbox-content')) {
+      closeLightbox();
+    }
+  });
+
   closeBtn.addEventListener('click', closeLightbox);
 
   window.addEventListener('keydown', (e) => {

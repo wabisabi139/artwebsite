@@ -27,7 +27,7 @@
     </svg>
 
     <main class="artboard" id="about-canvas">
-      <section id="about" style="position: static; width: 100%; display: flex; flex-direction: column; align-items: center;">
+      <section id="about" style="position: static;">
         <!-- Background decorative starbursts (aria-hidden) -->
         <svg class="bg-decor-svg" viewBox="0 0 924 1308" aria-hidden="true" focusable="false">
           <!-- Top-Left Dark Starburst -->
@@ -79,26 +79,13 @@
           </nav>
         </div>
 
-        <!-- Mobile Interests Row (visible on phones, hidden on desktop) -->
-        <div class="p1-mobile-interests">
-          <span class="p1-mobile-label">INTERESTS</span>
-          <a class="p1-mobile-handle" href="https://instagram.com/wasabi.likes.to.draw" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-            </svg>
-            @wasabi.likes.to.draw
-          </a>
-        </div>
-
         <!-- Intro Text -->
         <div class="p1-intro">
           <p>I love exploring human life, health and well-being, through the lens of biology and art.</p>
           <p>I'm interested in opportunities that combine health, education, creativity, and research.</p>
         </div>
 
-        <!-- Desktop Curved Arcs (visible on desktop >= 821px) -->
+        <!-- Curved Arcs (Active on desktop & mobile) -->
         <svg class="p1-arc-svg" viewBox="0 0 924 1308" aria-hidden="true">
           <defs>
             <path id="arc-interests" d="M 40 480 A 250 250 0 0 1 160 300" fill="none" />
@@ -140,11 +127,6 @@
                width="922"
                height="1229"
                decoding="async">
-        </div>
-
-        <!-- Mobile Creative Portfolio Link -->
-        <div class="p1-mobile-portfolio">
-          <a href="/art/">CREATIVE PORTFOLIO &rarr;</a>
         </div>
       </section>
     </main>

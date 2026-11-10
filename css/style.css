@@ -382,50 +382,54 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-radius: 50%;
   color: #141414;
+  user-select: none;
 }
 
+/* Teal Starburst Text - Mathematically centered at polygon center (x=315/924=34.1%, y=240/1308=18.35%) */
 .p2-teal-content {
-  top: 8.5%;
-  left: 17.5%;
-  width: 33%;
-  height: 23%;
-  padding: 10px;
+  top: 18.35%;
+  left: 34.1%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  max-width: 175px;
+  padding: 2px;
 }
 
 .p2-teal-content .p2-degree {
-  font-size: clamp(12.5px, 1.95vw, 19.5px);
+  font-size: clamp(11.5px, 1.35vw, 14.5px);
   font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: 0.05em;
-  color: #141414;
-}
-
-.p2-teal-content .p2-dates {
-  font-size: clamp(11.5px, 1.8vw, 18px);
-  font-weight: 700;
-  margin: 3px 0 5px 0;
-  color: #141414;
-}
-
-.p2-teal-content .p2-inst {
-  font-size: clamp(11px, 1.7vw, 17px);
   line-height: 1.25;
   letter-spacing: 0.04em;
   color: #141414;
 }
 
+.p2-teal-content .p2-dates {
+  font-size: clamp(10.5px, 1.25vw, 13px);
+  font-weight: 700;
+  margin: 3px 0 4px 0;
+  color: #141414;
+}
+
+.p2-teal-content .p2-inst {
+  font-size: clamp(9.5px, 1.1vw, 11.5px);
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  color: #141414;
+}
+
+/* Grey Starburst Text - Mathematically centered at polygon center (x=650/924=70.35%, y=455/1308=34.78%) */
 .p2-grey-content {
-  top: 25.5%;
-  left: 54.5%;
-  width: 32%;
-  height: 22.5%;
-  padding: 10px;
+  top: 34.78%;
+  left: 70.35%;
+  transform: translate(-50%, -50%);
+  width: 18.5%;
+  max-width: 160px;
+  padding: 2px;
 }
 
 .p2-grey-content .p2-degree {
-  font-size: clamp(12px, 1.85vw, 18.5px);
+  font-size: clamp(11px, 1.3vw, 13.5px);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: 0.04em;
@@ -433,14 +437,14 @@ a:focus-visible {
 }
 
 .p2-grey-content .p2-dates {
-  font-size: clamp(11.5px, 1.75vw, 17.5px);
+  font-size: clamp(10.5px, 1.25vw, 12.5px);
   font-weight: 700;
-  margin: 3px 0 5px 0;
+  margin: 3px 0 4px 0;
   color: #141414;
 }
 
 .p2-grey-content .p2-inst {
-  font-size: clamp(10.5px, 1.55vw, 15.5px);
+  font-size: clamp(9.5px, 1.1vw, 11.5px);
   line-height: 1.25;
   letter-spacing: 0.03em;
   color: #242424;
@@ -1004,57 +1008,61 @@ a:focus-visible {
     aspect-ratio: 924 / 1950;
   }
 
-  /* Teal Starburst Text - Centered perfectly inside teal polygon (center y = 240 / 1950 = 12.3%) */
+  /* Teal Starburst Text - Centered perfectly inside teal polygon (center y = 240 / 1950 = 12.31%) */
   #education-content .p2-teal-content {
-    top: 3.5%;
-    left: 14.0%;
-    width: 40.0%;
-    height: 18.0%;
-    padding: 6px;
+    top: 12.31%;
+    left: 34.1%;
+    transform: translate(-50%, -50%);
+    width: 30.0%;
+    max-width: 215px;
+    height: auto;
+    padding: 2px;
   }
 
   #education-content .p2-teal-content .p2-degree {
-    font-size: 12px;
+    font-size: 11.5px;
     line-height: 1.22;
     font-weight: 700;
   }
 
   #education-content .p2-teal-content .p2-dates {
-    font-size: 11px;
+    font-size: 10.5px;
     line-height: 1.2;
     margin: 2px 0 3px 0;
     font-weight: 700;
   }
 
   #education-content .p2-teal-content .p2-inst {
-    font-size: 10px;
+    font-size: 9.5px;
     line-height: 1.22;
   }
 
-  /* Grey Starburst Text - Centered perfectly inside grey polygon (center y = 455 / 1950 = 23.3%) */
+  /* Grey Starburst Text - Centered perfectly inside grey polygon (center y = 455 / 1950 = 23.33%) */
   #education-content .p2-grey-content {
-    top: 14.5%;
-    left: 52.0%;
-    width: 38.0%;
-    height: 18.0%;
-    padding: 6px;
+    top: 23.33%;
+    left: 70.35%;
+    transform: translate(-50%, -50%);
+    width: 28.0%;
+    max-width: 200px;
+    height: auto;
+    padding: 2px;
   }
 
   #education-content .p2-grey-content .p2-degree {
-    font-size: 11.5px;
+    font-size: 11px;
     line-height: 1.22;
     font-weight: 700;
   }
 
   #education-content .p2-grey-content .p2-dates {
-    font-size: 11px;
+    font-size: 10.5px;
     line-height: 1.2;
     margin: 2px 0 3px 0;
     font-weight: 700;
   }
 
   #education-content .p2-grey-content .p2-inst {
-    font-size: 10px;
+    font-size: 9.5px;
     line-height: 1.22;
   }
 

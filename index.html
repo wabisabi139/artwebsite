@@ -50,33 +50,33 @@
           <polygon points="1036.7,1071.2 994.3,1088.3 1008.7,1131.8 963.0,1128.8 957.1,1174.2 917.3,1151.7 892.2,1190.0 866.1,1152.5 826.9,1176.1 819.7,1131.0 774.1,1135.3 787.1,1091.4 744.3,1075.6 775.0,1041.7 743.3,1008.8 785.7,991.7 771.3,948.2 817.0,951.2 822.9,905.8 862.7,928.3 887.8,890.0 913.9,927.5 953.1,903.9 960.3,949.0 1005.9,944.7 992.9,988.6 1035.7,1004.4 1005.0,1038.3" fill="#6B1040" />
         </svg>
 
-        <!-- Top Title -->
-        <h1 class="p1-title">MUCHUKOTA SHRIA.</h1>
+        <!-- Header Block: Title + Pill + Nav (flows vertically on mobile, desktop: display contents) -->
+        <div class="p1-header-block">
+          <h1 class="p1-title"><span class="title-word">MUCHUKOTA</span> <span class="title-word">SHRIA.</span></h1>
 
-        <!-- Maroon Pill -->
-        <header class="p1-pill">
-          <div class="p1-pill-line1">Master's Student - MS Biological Data Science</div>
-          <div class="p1-pill-line2">Indian Institute of Science Education and Research, Tirupati</div>
-          <a class="p1-pill-email" href="mailto:muchukota_20264014@students.iisertirupati.ac.in">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-            </svg>
-            muchukota_20264014@students.iisertirupati.ac.in
-          </a>
-        </header>
+          <header class="p1-pill">
+            <div class="p1-pill-line1">Master's Student - MS Biological Data Science</div>
+            <div class="p1-pill-line2">Indian Institute of Science Education and Research, Tirupati</div>
+            <a class="p1-pill-email" href="mailto:muchukota_20264014@students.iisertirupati.ac.in">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              muchukota_20264014@students.iisertirupati.ac.in
+            </a>
+          </header>
 
-        <!-- Site Navigation (Page 1 position: between pill and starburst) -->
-        <div class="p1-nav-pos">
-          <nav class="site-nav" aria-label="Main">
-            <a href="/#about" aria-current="page">ABOUT</a>
-            <span class="nav-sep" aria-hidden="true">&#183;</span>
-            <a href="/education/">EDUCATION</a>
-            <span class="nav-sep" aria-hidden="true">&#183;</span>
-            <a href="/posters/">POSTERS</a>
-            <span class="nav-sep" aria-hidden="true">&#183;</span>
-            <a href="/art/">ART</a>
-          </nav>
+          <div class="p1-nav-pos">
+            <nav class="site-nav" aria-label="Main">
+              <a href="/#about" aria-current="page">ABOUT</a>
+              <span class="nav-sep" aria-hidden="true">&#183;</span>
+              <a href="/education/">EDUCATION</a>
+              <span class="nav-sep" aria-hidden="true">&#183;</span>
+              <a href="/posters/">POSTERS</a>
+              <span class="nav-sep" aria-hidden="true">&#183;</span>
+              <a href="/art/">ART</a>
+            </nav>
+          </div>
         </div>
 
         <!-- Intro Text -->
@@ -85,17 +85,20 @@
           <p>I'm interested in opportunities that combine health, education, creativity, and research.</p>
         </div>
 
-        <!-- Curved Arcs (Active on desktop & mobile) -->
+        <!-- Curved Arcs (Extended arc paths to guarantee zero text truncation on any screen) -->
         <svg class="p1-arc-svg" viewBox="0 0 924 1308" aria-hidden="true">
           <defs>
-            <path id="arc-interests" d="M 40 480 A 250 250 0 0 1 160 300" fill="none" />
-            <path id="arc-instagram" d="M 52 525 A 250 250 0 0 0 315 725" fill="none" />
-            <path id="arc-portfolio" d="M 800 865 A 330 330 0 0 1 820 1210" fill="none" />
+            <!-- Lengthened arc for INTERESTS so full word with letter-spacing fits with 0 truncation -->
+            <path id="arc-interests" d="M 30 520 A 260 260 0 0 1 180 270" fill="none" />
+            <!-- Lengthened arc for Instagram handle -->
+            <path id="arc-instagram" d="M 52 525 A 255 255 0 0 0 350 745" fill="none" />
+            <!-- Lengthened arc for CREATIVE PORTFOLIO (600px length) ensuring 'PORTFOLIO' is 100% complete -->
+            <path id="arc-portfolio" d="M 815 750 A 380 380 0 0 1 815 1290" fill="none" />
           </defs>
 
           <!-- INTERESTS curved text -->
-          <text font-size="22" font-family="'Libre Baskerville', Georgia, serif" font-weight="700" letter-spacing="0.22em" fill="#FFFFFF">
-            <textPath href="#arc-interests" startOffset="5%">INTERESTS</textPath>
+          <text font-size="21" font-family="'Libre Baskerville', Georgia, serif" font-weight="700" letter-spacing="0.16em" fill="#FFFFFF">
+            <textPath href="#arc-interests" startOffset="3%">INTERESTS</textPath>
           </text>
 
           <!-- Instagram Camera Icon at (47, 517) -->
@@ -106,15 +109,15 @@
           </g>
 
           <!-- @wasabi.likes.to.draw curved link -->
-          <text font-size="20" font-family="'Libre Baskerville', Georgia, serif" font-weight="400" letter-spacing="0.12em" fill="#FFFFFF" text-decoration="underline">
-            <textPath href="#arc-instagram" startOffset="3%">
+          <text font-size="19" font-family="'Libre Baskerville', Georgia, serif" font-weight="400" letter-spacing="0.10em" fill="#FFFFFF" text-decoration="underline">
+            <textPath href="#arc-instagram" startOffset="2%">
               <a href="https://instagram.com/wasabi.likes.to.draw" target="_blank" rel="noopener" fill="#FFFFFF">@wasabi.likes.to.draw</a>
             </textPath>
           </text>
 
           <!-- CREATIVE PORTFOLIO curved text link -->
-          <text font-size="23" font-family="'Libre Baskerville', Georgia, serif" font-weight="700" letter-spacing="0.22em" fill="#FFFFFF">
-            <textPath href="#arc-portfolio" startOffset="3%">
+          <text font-size="22" font-family="'Libre Baskerville', Georgia, serif" font-weight="700" letter-spacing="0.18em" fill="#FFFFFF">
+            <textPath href="#arc-portfolio" startOffset="2%">
               <a href="/art/" fill="#FFFFFF">CREATIVE PORTFOLIO</a>
             </textPath>
           </text>

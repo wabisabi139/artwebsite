@@ -79,13 +79,27 @@
           </div>
         </div>
 
+        <!-- Mobile Alternate Design: Interests & Instagram badge bar (visible on mobile only) -->
+        <div class="p1-mobile-interests-bar">
+          <span class="p1-mobile-label">INTERESTS</span>
+          <span class="p1-mobile-sep" aria-hidden="true">&#183;</span>
+          <a href="https://instagram.com/wasabi.likes.to.draw" target="_blank" rel="noopener" class="p1-mobile-insta">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="p1-insta-icon">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            @wasabi.likes.to.draw
+          </a>
+        </div>
+
         <!-- Intro Text -->
         <div class="p1-intro">
           <p>I love exploring human life, health and well-being, through the lens of biology and art.</p>
           <p>I'm interested in opportunities that combine health, education, creativity, and research.</p>
         </div>
 
-        <!-- Curved Arcs (Extended arc paths to guarantee zero text truncation on any screen) -->
+        <!-- Curved Arcs (Active on desktop, hidden on mobile in favor of the mobile alternate design) -->
         <svg class="p1-arc-svg" viewBox="0 0 924 1308" aria-hidden="true">
           <defs>
             <!-- Lengthened arc for INTERESTS so full word with letter-spacing fits with 0 truncation -->
@@ -130,6 +144,15 @@
                width="922"
                height="1229"
                decoding="async">
+        </div>
+
+        <!-- Mobile Alternate Design: Creative Portfolio CTA (visible on mobile only) -->
+        <div class="p1-mobile-portfolio-cta">
+          <a href="/art/" class="p1-mobile-portfolio-link">
+            <span class="portfolio-star" aria-hidden="true">&#10022;</span>
+            CREATIVE PORTFOLIO
+            <span class="portfolio-arrow" aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </section>
     </main>

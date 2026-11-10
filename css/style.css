@@ -352,6 +352,12 @@ a:focus-visible {
   fill: var(--text-white);
 }
 
+/* Mobile alternate design elements (hidden on desktop) */
+.p1-mobile-interests-bar,
+.p1-mobile-portfolio-cta {
+  display: none;
+}
+
 /* ==========================================================================
    PAGE 2: EDUCATION
    ========================================================================== */
@@ -846,91 +852,276 @@ a:focus-visible {
     padding: 2px 4px;
   }
 
-  /* Page 1 Artboard Canvas Proportions */
-  #about-canvas {
-    aspect-ratio: 924 / 1620;
+  /* Page 1: Hide curved SVG arcs on mobile; show legible mobile alternate design */
+  #about-canvas .p1-arc-svg {
+    display: none;
   }
 
-  /* Intro text in natural flex flow below nav: guaranteed zero overlap on any screen */
+  /* Page 1 Canvas: Allow natural vertical growth so nothing collides or clips */
+  #about-canvas {
+    aspect-ratio: auto;
+    min-height: 100vh;
+    padding-bottom: 24px;
+  }
+
+  /* Mobile Alternate Design: Interests & Instagram Badge Bar */
+  .p1-mobile-interests-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin: 4px auto 8px;
+    padding: 7px 16px;
+    border-radius: 20px;
+    background-color: rgba(107, 16, 64, 0.45);
+    border: 1px solid rgba(240, 221, 168, 0.35);
+    width: fit-content;
+    max-width: 90%;
+    z-index: 20;
+    position: relative;
+    user-select: none;
+  }
+
+  .p1-mobile-label {
+    font-family: var(--font-serif);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--text-white);
+    text-transform: uppercase;
+  }
+
+  .p1-mobile-sep {
+    color: var(--text-cream);
+    opacity: 0.6;
+    font-size: 14px;
+  }
+
+  .p1-mobile-insta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-serif);
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    color: var(--text-cream);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .p1-insta-icon {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  /* Intro text in natural flex flow: perfectly centered over bright maroon starburst */
   #about-canvas .p1-intro {
     position: relative;
     top: auto;
     left: auto;
-    width: 82%;
-    margin: 10px auto 0;
+    width: 86%;
+    margin: 8px auto 12px;
     font-size: clamp(13px, 3.8vw, 15px);
     line-height: 1.55;
-    gap: 0.9em;
+    gap: 0.85em;
     z-index: 10;
     text-align: left;
   }
 
+  /* Notebook painting in natural document flow on mobile */
   #about-canvas .p1-image-wrap {
-    top: 51.5%;
-    left: 28%;
-    width: 54%;
-    height: 45.5%;
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 72%;
+    max-width: 330px;
+    aspect-ratio: 922 / 1229;
+    height: auto;
+    margin: 6px auto 14px;
+    z-index: 8;
+    display: flex;
   }
 
-  /* Page 2 Mobile Spacing */
-  #education-content {
-    aspect-ratio: 924 / 1640;
+  /* Mobile Alternate Design: Creative Portfolio CTA */
+  .p1-mobile-portfolio-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px auto 16px;
+    z-index: 20;
+    position: relative;
   }
 
-  #education-content .p2-teal-content {
-    top: 7.5%;
-    width: 38%;
-    height: 24%;
+  .p1-mobile-portfolio-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-serif);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-white);
+    text-decoration: none;
+    background-color: var(--pill-maroon);
+    border: 1px solid rgba(240, 221, 168, 0.45);
+    padding: 10px 22px;
+    border-radius: 24px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+    transition: transform 0.2s ease, background-color 0.2s ease;
   }
 
-  #education-content .p2-grey-content {
-    top: 24.0%;
-    width: 36%;
-    height: 23%;
+  .p1-mobile-portfolio-link:active {
+    transform: scale(0.98);
   }
 
-  #education-content .p2-figure {
-    top: 25.5%;
-    height: 25%;
-  }
-
-  #education-content .p2-courses-block {
-    top: 53.5%;
-    width: 48%;
-  }
-
-  #education-content .p2-courses-block h2 {
-    font-size: 15px;
-  }
-
-  #education-content .p2-courses-block li {
+  .portfolio-star {
+    color: var(--text-cream);
     font-size: 13px;
   }
 
+  .portfolio-arrow {
+    color: var(--text-cream);
+    font-size: 15px;
+    transition: transform 0.2s ease;
+  }
+
+  .p1-mobile-portfolio-link:hover .portfolio-arrow {
+    transform: translateX(3px);
+  }
+
+  /* ==========================================================================
+     Page 2 (Education) Mobile Spacing - Mathematically Aligned to SVG ViewBox
+     ========================================================================== */
+  #education-content {
+    aspect-ratio: 924 / 1950;
+  }
+
+  /* Teal Starburst Text - Centered perfectly inside teal polygon (center y = 240 / 1950 = 12.3%) */
+  #education-content .p2-teal-content {
+    top: 3.5%;
+    left: 14.0%;
+    width: 40.0%;
+    height: 18.0%;
+    padding: 6px;
+  }
+
+  #education-content .p2-teal-content .p2-degree {
+    font-size: 12px;
+    line-height: 1.22;
+    font-weight: 700;
+  }
+
+  #education-content .p2-teal-content .p2-dates {
+    font-size: 11px;
+    line-height: 1.2;
+    margin: 2px 0 3px 0;
+    font-weight: 700;
+  }
+
+  #education-content .p2-teal-content .p2-inst {
+    font-size: 10px;
+    line-height: 1.22;
+  }
+
+  /* Grey Starburst Text - Centered perfectly inside grey polygon (center y = 455 / 1950 = 23.3%) */
+  #education-content .p2-grey-content {
+    top: 14.5%;
+    left: 52.0%;
+    width: 38.0%;
+    height: 18.0%;
+    padding: 6px;
+  }
+
+  #education-content .p2-grey-content .p2-degree {
+    font-size: 11.5px;
+    line-height: 1.22;
+    font-weight: 700;
+  }
+
+  #education-content .p2-grey-content .p2-dates {
+    font-size: 11px;
+    line-height: 1.2;
+    margin: 2px 0 3px 0;
+    font-weight: 700;
+  }
+
+  #education-content .p2-grey-content .p2-inst {
+    font-size: 10px;
+    line-height: 1.22;
+  }
+
+  /* Wooden Figure - Sits between the two starbursts */
+  #education-content .p2-figure {
+    top: 17.5%;
+    left: 8.0%;
+    width: 22.0%;
+    height: 18.0%;
+  }
+
+  /* Art Minor Courses Done - Starts right at arrowhead (37.1%) */
+  #education-content .p2-courses-block {
+    top: 38.0%;
+    left: 6.0%;
+    width: 50.0%;
+  }
+
+  #education-content .p2-courses-block h2 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  #education-content .p2-courses-block ul {
+    gap: 5px;
+  }
+
+  #education-content .p2-courses-block li {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  /* Photos stacked on the right side */
   #education-content .p2-photo-pigeons {
-    top: 49.5%;
-    width: 38%;
-    height: 14%;
+    top: 36.5%;
+    left: 58.5%;
+    width: 37.5%;
+    height: 10.5%;
   }
 
   #education-content .p2-photo-hands {
-    top: 64.5%;
-    width: 34%;
-    height: 14.5%;
+    top: 48.5%;
+    left: 62.0%;
+    width: 34.0%;
+    height: 11.0%;
   }
 
+  /* Online Certificate Courses - Safely below both courses and hands photo (16.5% buffer!) */
   #education-content .p2-certs-block {
-    top: 77.5%;
-    width: 72%;
+    top: 62.5%;
+    left: 5.0%;
+    width: 90.0%;
   }
 
   #education-content .p2-certs-block h2 {
-    font-size: 14px;
+    font-size: 13.5px;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+  }
+
+  #education-content .p2-certs-block ul {
+    gap: 8px;
   }
 
   #education-content .p2-certs-block li {
-    font-size: 12.5px;
-    line-height: 1.4;
+    font-size: 12px;
+    line-height: 1.45;
   }
 
   /* Page 3 Mobile Spacing */
@@ -998,31 +1189,44 @@ a:focus-visible {
   }
 
   #about-canvas .p1-intro {
-    font-size: 13.5px;
+    font-size: 13px;
   }
 
-  #education-content .p2-teal-content .p2-degree {
-    font-size: 12.5px;
-  }
-
-  #education-content .p2-teal-content .p2-dates {
-    font-size: 11.5px;
-  }
-
-  #education-content .p2-teal-content .p2-inst {
-    font-size: 10.5px;
-  }
-
-  #education-content .p2-grey-content .p2-degree {
-    font-size: 12px;
-  }
-
-  #education-content .p2-grey-content .p2-dates {
+  .p1-mobile-label {
     font-size: 11px;
   }
 
+  .p1-mobile-insta {
+    font-size: 11.5px;
+  }
+
+  .p1-mobile-portfolio-link {
+    font-size: 11.5px;
+    padding: 8px 18px;
+  }
+
+  #education-content .p2-teal-content .p2-degree {
+    font-size: 11.5px;
+  }
+
+  #education-content .p2-teal-content .p2-dates {
+    font-size: 10.5px;
+  }
+
+  #education-content .p2-teal-content .p2-inst {
+    font-size: 9.5px;
+  }
+
+  #education-content .p2-grey-content .p2-degree {
+    font-size: 11px;
+  }
+
+  #education-content .p2-grey-content .p2-dates {
+    font-size: 10.5px;
+  }
+
   #education-content .p2-grey-content .p2-inst {
-    font-size: 10px;
+    font-size: 9.5px;
   }
 }
 

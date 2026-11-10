@@ -27,7 +27,7 @@
     </svg>
 
     <main class="artboard" id="about-canvas">
-      <section id="about" style="position: static;">
+      <section id="about" style="position: static; width: 100%; display: flex; flex-direction: column; align-items: center;">
         <!-- Background decorative starbursts (aria-hidden) -->
         <svg class="bg-decor-svg" viewBox="0 0 924 1308" aria-hidden="true" focusable="false">
           <!-- Top-Left Dark Starburst -->
@@ -79,20 +79,30 @@
           </nav>
         </div>
 
+        <!-- Mobile Interests Row (visible on phones, hidden on desktop) -->
+        <div class="p1-mobile-interests">
+          <span class="p1-mobile-label">INTERESTS</span>
+          <a class="p1-mobile-handle" href="https://instagram.com/wasabi.likes.to.draw" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            @wasabi.likes.to.draw
+          </a>
+        </div>
+
         <!-- Intro Text -->
         <div class="p1-intro">
           <p>I love exploring human life, health and well-being, through the lens of biology and art.</p>
           <p>I'm interested in opportunities that combine health, education, creativity, and research.</p>
         </div>
 
-        <!-- Left Arc Text & Instagram Handle -->
+        <!-- Desktop Curved Arcs (visible on desktop >= 821px) -->
         <svg class="p1-arc-svg" viewBox="0 0 924 1308" aria-hidden="true">
           <defs>
-            <!-- Arc for INTERESTS going upward along left edge of starburst -->
             <path id="arc-interests" d="M 40 480 A 250 250 0 0 1 160 300" fill="none" />
-            <!-- Arc for Instagram handle curving down and right -->
             <path id="arc-instagram" d="M 52 525 A 250 250 0 0 0 315 725" fill="none" />
-            <!-- Arc for CREATIVE PORTFOLIO on right edge -->
             <path id="arc-portfolio" d="M 800 865 A 330 330 0 0 1 820 1210" fill="none" />
           </defs>
 
@@ -130,6 +140,11 @@
                width="922"
                height="1229"
                decoding="async">
+        </div>
+
+        <!-- Mobile Creative Portfolio Link -->
+        <div class="p1-mobile-portfolio">
+          <a href="/art/">CREATIVE PORTFOLIO &rarr;</a>
         </div>
       </section>
     </main>

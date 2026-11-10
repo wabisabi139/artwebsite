@@ -1,0 +1,803 @@
+/* ==========================================================================
+   MUCHUKOTA SHRIA - PORTFOLIO DESIGN SYSTEM
+   Source of Truth: Shria_nov_26_-_original_version.pdf (924 x 1308 px canvas)
+   ========================================================================== */
+
+:root {
+  --bg-dark: #141414;
+  --maroon-bright: #6B1040;
+  --maroon-dark: #2B0F1C;
+  --maroon-shadow: #4A0B2C;
+  --text-cream: #F0DDA8;
+  --text-white: #FFFFFF;
+  --teal-grey: #7B9EA0;
+  --pale-grey-blue: #C8D0DA;
+  --sage-green: #A9D3B5;
+  --periwinkle: #B4C3EA;
+  --tan-blob: #B7A06C;
+  --font-serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg-dark);
+  color: var(--text-cream);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  color: var(--text-cream);
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Accessibility skip link */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link:focus {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: auto;
+  height: auto;
+  padding: 8px 16px;
+  background: var(--text-cream);
+  color: var(--bg-dark);
+  z-index: 10000;
+  clip: auto;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Base links */
+a {
+  color: inherit;
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+a:focus-visible {
+  outline: 1.5px solid var(--text-cream);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   NAVIGATION
+   Single centered line: "ABOUT · EDUCATION · POSTERS · ART"
+   Present on all 4 pages. Identical markup & classes.
+   ========================================================================== */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6em 0.8em;
+  font-family: var(--font-serif);
+  font-size: clamp(12px, 1.35vw, 15px);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-white);
+  padding: 4px 8px;
+  user-select: none;
+  z-index: 30;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--text-white);
+  padding: 2px 4px;
+  white-space: nowrap;
+}
+
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.site-nav .nav-sep {
+  color: rgba(240, 221, 168, 0.6);
+  font-size: 0.75em;
+  line-height: 1;
+}
+
+/* Nav wrapper variations per page specification */
+.nav-strip {
+  width: 100%;
+  background-color: var(--bg-dark);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  position: relative;
+  z-index: 40;
+}
+
+.p1-nav-pos {
+  position: absolute;
+  top: 18.2%; /* y approx 238px on 1308 canvas */
+  left: 0;
+  width: 100%;
+}
+
+.p3-nav-pos {
+  position: absolute;
+  top: 5.2%; /* y approx 68px on 1308 canvas */
+  left: 0;
+  width: 100%;
+}
+
+/* ==========================================================================
+   PAGE WRAPPER & ARTBOARD
+   Canvas Reference: 924px x 1308px (A4 portrait proportion ~0.7064)
+   ========================================================================== */
+.page-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.artboard {
+  position: relative;
+  width: 100%;
+  max-width: 924px;
+  aspect-ratio: 924 / 1308;
+  background-color: var(--bg-dark);
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* Full bleed decorative background SVG layer */
+.bg-decor-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Desktop edge-bleed decorative starbursts */
+.desktop-bleed-left,
+.desktop-bleed-right {
+  display: none;
+}
+
+@media (min-width: 1080px) {
+  .desktop-bleed-left,
+  .desktop-bleed-right {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 240px;
+    height: 600px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+  .desktop-bleed-left {
+    left: calc(50% - 462px - 220px);
+  }
+  .desktop-bleed-right {
+    right: calc(50% - 462px - 220px);
+  }
+}
+
+/* ==========================================================================
+   PAGE 1: ABOUT (HOMEPAGE)
+   ========================================================================== */
+.p1-title {
+  position: absolute;
+  top: 4.8%; /* y ~ 63px */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(26px, 4.3vw, 42px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--text-white);
+  z-index: 10;
+}
+
+.p1-pill {
+  position: absolute;
+  top: 9.4%; /* y ~ 123px */
+  left: 4.3%; /* x ~ 40px */
+  width: 91.4%; /* width ~ 844px */
+  height: 8.0%; /* height ~ 104px */
+  background-color: var(--maroon-bright);
+  border-radius: 9999px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 8px 24px;
+  text-align: center;
+  color: var(--text-cream);
+  z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.p1-pill-line1,
+.p1-pill-line2 {
+  font-size: clamp(12px, 1.8vw, 17.5px);
+  letter-spacing: 0.08em;
+  color: var(--text-cream);
+  line-height: 1.25;
+}
+
+.p1-pill-email {
+  font-size: clamp(12px, 1.7vw, 16.5px);
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-top: 2px;
+}
+
+.p1-pill-email svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+}
+
+.p1-intro {
+  position: absolute;
+  top: 31.3%; /* y ~ 410px */
+  left: 15.5%; /* x ~ 143px */
+  width: 80%; /* width ~ 739px */
+  z-index: 10;
+  color: var(--text-cream);
+  font-size: clamp(15px, 2.1vw, 21.5px);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4em;
+}
+
+.p1-image-wrap {
+  position: absolute;
+  top: 43.4%; /* y ~ 568px */
+  left: 33.5%; /* x ~ 310px */
+  width: 49.6%; /* width ~ 458px */
+  height: 50.0%; /* height ~ 654px */
+  z-index: 8;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.p1-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+}
+
+/* Curved text SVG layers on Page 1 */
+.p1-arc-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 12;
+  pointer-events: none;
+}
+
+.p1-arc-svg a,
+.p1-arc-svg text {
+  pointer-events: auto;
+  font-family: var(--font-serif);
+  fill: var(--text-white);
+}
+
+/* ==========================================================================
+   PAGE 2: EDUCATION
+   ========================================================================== */
+.p2-arc-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.p2-starburst-text {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 50%;
+  color: #141414;
+}
+
+.p2-teal-content {
+  top: 8.5%; /* center ~ 240px */
+  left: 17.5%; /* center ~ 315px */
+  width: 33%;
+  height: 23%;
+  padding: 10px;
+}
+
+.p2-teal-content .p2-degree {
+  font-size: clamp(13px, 1.95vw, 19.5px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+  color: #141414;
+}
+
+.p2-teal-content .p2-dates {
+  font-size: clamp(12px, 1.8vw, 18px);
+  font-weight: 700;
+  margin: 4px 0 6px 0;
+  color: #141414;
+}
+
+.p2-teal-content .p2-inst {
+  font-size: clamp(12px, 1.7vw, 17px);
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  color: #141414;
+}
+
+.p2-grey-content {
+  top: 25.5%; /* center ~ 455px */
+  left: 54.5%; /* center ~ 650px */
+  width: 32%;
+  height: 22.5%;
+  padding: 10px;
+}
+
+.p2-grey-content .p2-degree {
+  font-size: clamp(13px, 1.85vw, 18.5px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  color: #141414;
+}
+
+.p2-grey-content .p2-dates {
+  font-size: clamp(12px, 1.75vw, 17.5px);
+  font-weight: 700;
+  margin: 4px 0 6px 0;
+  color: #141414;
+}
+
+.p2-grey-content .p2-inst {
+  font-size: clamp(11.5px, 1.55vw, 15.5px);
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  color: #242424;
+}
+
+.p2-figure {
+  position: absolute;
+  top: 26.6%; /* y ~ 348px */
+  left: 10.5%; /* x ~ 97px */
+  width: 21.6%; /* width ~ 200px */
+  height: 27.3%; /* height ~ 357px */
+  z-index: 12;
+}
+
+.p2-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.p2-courses-block {
+  position: absolute;
+  top: 56.4%; /* y ~ 738px */
+  left: 14.1%; /* x ~ 130px */
+  width: 44%;
+  z-index: 10;
+  color: var(--text-cream);
+}
+
+.p2-courses-block h2 {
+  font-size: clamp(15px, 2.0vw, 20px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.p2-courses-block ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.p2-courses-block li {
+  font-size: clamp(13.5px, 1.85vw, 18.5px);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.p2-courses-block li::before {
+  content: "•";
+  font-size: 1.3em;
+  line-height: 0;
+  color: var(--text-cream);
+}
+
+.p2-photo-pigeons {
+  position: absolute;
+  top: 49.9%; /* y ~ 653px */
+  left: 59.0%; /* x ~ 545px */
+  width: 36.8%; /* width ~ 340px */
+  height: 14.5%; /* height ~ 190px */
+  z-index: 9;
+}
+
+.p2-photo-hands {
+  position: absolute;
+  top: 65.5%; /* y ~ 857px */
+  left: 65.2%; /* x ~ 602px */
+  width: 32.0%; /* width ~ 296px */
+  height: 15.0%; /* height ~ 196px */
+  z-index: 9;
+}
+
+.p2-photo-pigeons img,
+.p2-photo-hands img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+
+.p2-certs-block {
+  position: absolute;
+  top: 73.9%; /* y ~ 967px */
+  left: 5.2%; /* x ~ 48px */
+  width: 58.0%; /* width ~ 535px */
+  z-index: 10;
+}
+
+.p2-certs-block h2 {
+  font-size: clamp(14px, 1.9vw, 19px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-white);
+  margin-bottom: 12px;
+}
+
+.p2-certs-block ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.p2-certs-block li {
+  font-size: clamp(12.5px, 1.65vw, 16.5px);
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.p2-certs-block li::before {
+  content: "•";
+  font-size: 1.3em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.p2-certs-block .sage {
+  color: var(--sage-green);
+}
+.p2-certs-block .sage::before {
+  color: var(--sage-green);
+}
+
+.p2-certs-block .periwinkle {
+  color: var(--periwinkle);
+}
+.p2-certs-block .periwinkle::before {
+  color: var(--periwinkle);
+}
+
+/* ==========================================================================
+   PAGE 3: POSTERS
+   ========================================================================== */
+.p3-grid-item {
+  position: absolute;
+  z-index: 10;
+}
+
+.p3-cancer {
+  top: 11.5%; /* y ~ 150px */
+  left: 5.4%; /* x ~ 50px */
+  width: 47.4%; /* width ~ 438px */
+  height: 46.3%; /* height ~ 605px */
+}
+
+.p3-meal {
+  top: 11.5%; /* y ~ 150px */
+  left: 54.6%; /* x ~ 505px */
+  width: 43.2%; /* width ~ 399px */
+  height: 38.1%; /* height ~ 498px */
+}
+
+.p3-macromolecules {
+  top: 50.2%; /* y ~ 657px */
+  left: 54.6%; /* x ~ 505px */
+  width: 43.2%; /* width ~ 399px */
+  height: 38.4%; /* height ~ 502px */
+}
+
+.p3-cloud {
+  top: 59.3%; /* y ~ 775px */
+  left: 2.2%; /* x ~ 20px */
+  width: 50.6%; /* width ~ 468px */
+  height: 25.2%; /* height ~ 330px */
+}
+
+.p3-grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.p3-label {
+  position: absolute;
+  top: 86.9%; /* y ~ 1137px */
+  left: 5.4%;
+  width: 47.4%; /* Align with right edge of cancer/cloud column */
+  text-align: right;
+  font-size: clamp(24px, 3.8vw, 36px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--text-white);
+  z-index: 12;
+}
+
+/* ==========================================================================
+   PAGE 4: ART (WATERCOLOUR AND ACRYLIC / SELF-PORTRAITS)
+   ========================================================================== */
+.p4-title {
+  position: absolute;
+  top: 3.6%; /* y ~ 47px */
+  left: 2.0%; /* x ~ 18px */
+  font-size: clamp(18px, 2.8vw, 27px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--text-white);
+  z-index: 15;
+}
+
+.p4-hands {
+  position: absolute;
+  top: 7.1%; /* y ~ 93px */
+  left: 4.0%; /* x ~ 37px */
+  width: 46.4%; /* width ~ 429px */
+  height: 23.7%; /* height ~ 310px */
+  z-index: 10;
+}
+
+.p4-hands img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+
+.p4-tote {
+  position: absolute;
+  top: 30.8%; /* y ~ 403px */
+  left: 10.3%; /* x ~ 95px */
+  width: 39.0%; /* width ~ 360px */
+  height: 28.4%; /* height ~ 372px */
+  z-index: 11;
+}
+
+.p4-tote img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.p4-padmapani {
+  position: absolute;
+  top: 7.1%; /* y ~ 93px */
+  left: 50.6%; /* x ~ 468px */
+  width: 43.7%; /* width ~ 404px */
+  height: 46.4%; /* height ~ 607px */
+  z-index: 10;
+}
+
+.p4-padmapani img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.65);
+}
+
+.p4-selfportraits-label {
+  position: absolute;
+  top: 62.3%; /* y ~ 815px */
+  left: 12.7%; /* x ~ 117px */
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  line-height: 1.25;
+  color: var(--text-white);
+  z-index: 15;
+}
+
+.p4-upward-wrap {
+  position: absolute;
+  top: 54.1%; /* y ~ 708px */
+  left: 50.8%; /* x ~ 469px */
+  width: 42.1%; /* width ~ 389px */
+  height: 44.3%; /* height ~ 580px */
+  z-index: 10;
+}
+
+.p4-upward-shadow {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--maroon-bright);
+  border-radius: 25px;
+  z-index: 1;
+}
+
+.p4-upward-wrap img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+  z-index: 2;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.p4-seated-wrap {
+  position: absolute;
+  top: 70.7%; /* y ~ 925px */
+  left: 13.0%; /* x ~ 120px */
+  width: 33.5%; /* width ~ 310px */
+  height: 29.3%; /* runs off bottom edge */
+  z-index: 12;
+}
+
+.p4-seated-wrap svg.tan-blob {
+  position: absolute;
+  top: -4%;
+  left: -8%;
+  width: 116%;
+  height: 105%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.p4-seated-wrap img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   MODAL LIGHTBOX (Phone tap fullscreen image viewer)
+   ========================================================================== */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(6px);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 96vw;
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--text-cream);
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   RESPONSIVE REFLOW & ADAPTATIONS (< 640px)
+   Proportions scale fluidly; text sizes protect legibility via clamp()
+   ========================================================================== */
+@media (max-width: 640px) {
+  .site-nav {
+    letter-spacing: 0.12em;
+    gap: 0.4em 0.6em;
+  }
+  
+  .p1-pill {
+    padding: 6px 12px;
+  }
+  
+  .p1-pill-line1,
+  .p1-pill-line2,
+  .p1-pill-email {
+    font-size: clamp(10px, 2.7vw, 13px);
+  }
+}
